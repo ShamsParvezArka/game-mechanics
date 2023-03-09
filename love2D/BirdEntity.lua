@@ -1,3 +1,5 @@
+require 'Constants'
+
 BirdEntity = {
 	x = 0,
 	y = 0,
@@ -5,9 +7,6 @@ BirdEntity = {
 	height = 0,
 	dy = 0
 }
-
-local GRAVITY = 20
-local ANTI_GRAVITY = 5
 
 function BirdEntity:new(o, x, y, width, height)
 	o = o or {}
@@ -21,11 +20,14 @@ function BirdEntity:new(o, x, y, width, height)
 end
 
 function BirdEntity:update(dt)
-	self.dy = self.dy + GRAVITY * dt
+	if (self.y + self.height < WINDOW_HEIGHT) then
+		self.dy = self.dy + GRAVITY * dt
+		self.y = self.y + self.dy
+	end
 	if (love.keyboard.isDown("space")) then
 		self.dy = - ANTI_GRAVITY
+		self.y = self.y + self.dy
 	end
-	self.y = self.y + self.dy
 end
 
 function BirdEntity:render()
