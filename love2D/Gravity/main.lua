@@ -1,3 +1,4 @@
+require 'Constants'
 require 'BirdEntity'
 
 WINDOW_WIDTH  = 1200
