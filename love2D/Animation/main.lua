@@ -11,5 +11,5 @@ function love.update(dt)
 end
 
 function love.draw()
-	pinkMonster:liveRender()
+	pinkMonster:render()
 end
