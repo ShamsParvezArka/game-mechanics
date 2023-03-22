@@ -8,9 +8,18 @@ function love.load()
 	})
 end
 
+vector_x = {}
+vector_y = {}
+
 function love.update(dt)
+	if (love.mouse.isDown(1)) then
+		table.insert(vector_x, love.mouse.getX())
+		table.insert(vector_y, love.mouse.getY())
+	end
 end
 
 function love.draw()
-	love.graphics.rectangle("fill", love.mouse.getX() - BOX_WIDTH / 2, love.mouse.getY() - BOX_HEIGHT / 2, BOX_WIDTH, BOX_HEIGHT)
+	for i = 1, #vector_x do
+		love.graphics.circle("fill", vector_x[i], vector_y[i], RADIUS)
+	end
 end
